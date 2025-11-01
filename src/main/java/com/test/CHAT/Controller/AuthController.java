@@ -21,15 +21,18 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/register")
+    @PostMapping("/creer")
     public ResponseEntity<?> register(@RequestBody @Validated RegisterRequestDTO dto) {
         authService.register(dto);
         return ResponseEntity.ok("Utilisateur créé avec succès");
     }
 
-    @PostMapping("/login")
+    @PostMapping("/connecter")
     public ResponseEntity<AuthResponseDTO> login(@RequestBody @Validated LoginRequestDTO dto) {
+        System.out.println("--- AuthController: /login endpoint hit ---");
+        System.out.println("Login DTO username: " + dto.getUsername());
         String token = authService.login(dto);
+        System.out.println("--- AuthController: Token generated ---");
         return ResponseEntity.ok(new AuthResponseDTO(token));
     }
 }

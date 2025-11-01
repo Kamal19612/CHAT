@@ -19,9 +19,16 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("--- CustomUserDetailsService: loading user: " + username + " ---");
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() ->
-                        new UsernameNotFoundException("Utilisateur non trouvé : " + username));
+                .orElseThrow(() -> {
+                    System.err.println("!!! CustomUserDetailsService: User not found: " + username + " !!!");
+                    return new UsernameNotFoundException("Utilisateur non trouvé : " + username);
+                });
+
+        System.out.println("--- CustomUserDetailsService: User found in DB ---");
+        boolean isAccountNonLocked = user.getIsActive() != null && user.getIsActive();
+        System.out.println("--- CustomUserDetailsService: isAccountNonLocked = " + isAccountNonLocked + " ---");
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
@@ -29,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService{
                 true,  // enabled
                 true,  // accountNonExpired
                 true,  // credentialsNonExpired
-                user.getIsActive(), // accountNonLocked
+                isAccountNonLocked, // accountNonLocked
                 java.util.Collections.emptyList()  // pas encore de rôles
         );
     }

@@ -28,6 +28,7 @@ public class JwtService {
 
     private final JwtProperties jwtProperties;
     private final SecretKey key;
+    @SuppressWarnings("unused")
     private Object user;
 
 

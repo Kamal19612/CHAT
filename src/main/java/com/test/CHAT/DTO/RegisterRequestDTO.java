@@ -2,14 +2,10 @@ package com.test.CHAT.DTO;
 
 public class RegisterRequestDTO {
 
-    @NotBlank
     private String username;
 
-    @Email
-    @NotBlank
     private String email;
 
-    @NotBlank
     private String password;
 
     // Getters et Setters

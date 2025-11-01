@@ -14,7 +14,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class SMSRequestDTO {
 
-    private User sender;
+    private User senderUserName;
+    private String recipientUsername;
     private String content;
     private MessageType messageType;
 }

@@ -2,14 +2,16 @@ package com.test.CHAT.DTO.UserDTO;
 
 import org.springframework.stereotype.Component;
 
+import com.test.CHAT.DTO.RegisterRequestDTO;
+
 import lombok.Data;
 
 @Component
 @Data
 public class userMapper {
 
-    // Méthode pour convertir un userRequestDTO en User entity
-    public static com.test.CHAT.Entities.User toUser(userRequestDTO dto) {
+    // Méthode pour convertir un RegisterRequestDTO en User entity
+    public static com.test.CHAT.Entities.User toUser(RegisterRequestDTO dto) {
         if (dto == null) {
             return null;
         }

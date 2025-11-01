@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class SMSResponseDTO {
 
-    private User sender;  // pratique pour l'affichage
+    private User senderUserName;  // pratique pour l'affichage
     private String content;
     private MessageType messageType;
 }

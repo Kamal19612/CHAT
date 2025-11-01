@@ -3,6 +3,7 @@ package com.test.CHAT.DTO.SMSDTO;
 import org.springframework.stereotype.Component;
 
 
+
 @Component
 public class SMSMapperDTO {
 
@@ -12,7 +13,7 @@ public class SMSMapperDTO {
             return null;
         }
         return com.test.CHAT.Entities.SMS.builder()
-                .sender(dto.getSender())
+                .senderUserName(dto.getSenderUserName())
                 .content(dto.getContent())
                 .messageType(dto.getMessageType())
                 .build();
@@ -23,7 +24,7 @@ public class SMSMapperDTO {
             return null;
         }
         return SMSResponseDTO.builder()
-                .sender(entity.getSender())
+                .senderUserName(entity.getSenderUserName())
                 .content(entity.getContent())
                 .messageType(entity.getMessageType())
                 .build();

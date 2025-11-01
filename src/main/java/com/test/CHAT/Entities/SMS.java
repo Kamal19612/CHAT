@@ -40,7 +40,7 @@ public class SMS {
     // la personne qui envoie le message
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private User sender;
+    private User senderUserName;
     
     private String content;
     
